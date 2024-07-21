@@ -22,7 +22,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               color: Colors.grey[100],
               child: Center(
                 child: Text(
-                  LocalStorageAuth.getNombre()??"Usuario",
+                  LocalStorageAuth.getNombre(),
                   style: generalStyle(),
                 ),
               )

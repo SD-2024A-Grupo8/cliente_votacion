@@ -1,5 +1,5 @@
+import 'package:cliente_votacion/screens/votante/procesos_list.dart';
 import 'package:cliente_votacion/widgets/layout.dart';
-import 'package:cliente_votacion/screens/votante/body.dart';
 import 'package:flutter/material.dart';
 
 class VotantePrincipal extends StatefulWidget {
@@ -14,7 +14,7 @@ class VotantePrincipalState extends State<VotantePrincipal> {
   Widget build(BuildContext context) {
     return const CustomLayout(
       title: "Lista de elecciones disponibles",
-      child: MyBody()
+      child: ProcesosList()
     );
   }
 }

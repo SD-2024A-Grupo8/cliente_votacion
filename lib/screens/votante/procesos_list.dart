@@ -34,29 +34,37 @@ class ProcesosList extends ConsumerWidget {
               itemCount: procesos.length,
               itemBuilder: (context, index) {
                 return Card(
+                    child: 
+                    InkWell(
+                  onTap: (){
+                    print('Card ${procesos[index].nameEleccion} tapped');
+                  },
+                  splashColor: Colors.amber,
+                  highlightColor: Colors.blue.withAlpha(50),
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                procesos[index].nameEleccion,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              procesos[index].nameEleccion,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
                               ),
-                              Text(
-                                procesos[index].description,
-                                style: const TextStyle(fontSize: 14),
-                              ),
-                              const SizedBox(height: 50),
-                            ],
-                          ),
-                        )
-                  ),
+                            ),
+                            Text(
+                              procesos[index].description,
+                              style: const TextStyle(fontSize: 14),
+                            ),
+                            const SizedBox(height: 50),
+                          ],
+                        ),
+                      )
+                    )
+                  )
                 );
               },
               padding: const EdgeInsets.all(10.0),

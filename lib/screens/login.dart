@@ -72,6 +72,14 @@ class Login extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 15.0),
                                 child: ElevatedButton(
+                                  style: ButtonStyle(
+                                    shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5.0),
+                                        side: const BorderSide(width: 1.0)
+                                      ),
+                                    ),
+                                  ),
                                   child: const Text(
                                     'Ingresar',
                                     style: TextStyle(color: Colors.black),

@@ -7,6 +7,13 @@ TextStyle generalStyle(){
   );
 }
 
+TextStyle titleStyle(){
+  return const TextStyle(
+    fontSize: 30,
+    color: Colors.black
+  );
+}
+
 TextStyle navBarStyle(){
   return const TextStyle(
     fontSize: 18,

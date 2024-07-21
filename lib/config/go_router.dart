@@ -1,6 +1,6 @@
-import 'package:cliente_votacion/screens/admin_principal.dart';
+import 'package:cliente_votacion/screens/admin/admin_principal.dart';
 import 'package:cliente_votacion/screens/login.dart';
-import 'package:cliente_votacion/screens/votante_principal.dart';
+import 'package:cliente_votacion/screens/votante/votante_principal.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

@@ -1,11 +1,33 @@
+import 'package:cliente_votacion/models/usuario.dart';
+import 'package:cliente_votacion/providers/states.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class Login extends StatelessWidget {
+class Login extends ConsumerStatefulWidget {
   const Login({super.key});
 
   @override
+  LoginState createState() => LoginState();
+}
+
+class LoginState extends ConsumerState<Login> {
+
+  final TextEditingController nombreController = TextEditingController();
+  final TextEditingController contraseniaController = TextEditingController();
+
+  @override
+  void dispose() {
+    nombreController.dispose();
+    contraseniaController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+
+    final usuarioNotifier = ref.read(usuarioLogeadoProvider.notifier);
+
     return Scaffold(
       appBar: AppBar(title: const Text('Bienvenido al sistema de votaciones')),
       body: Container(
@@ -45,21 +67,23 @@ class Login extends StatelessWidget {
                       Expanded(
                         child: Column(
                           children: <Widget>[
-                            const Padding(
-                              padding: EdgeInsets.only(top: 15, left: 15, right: 30),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 15, left: 15, right: 30),
                               child: TextField(
-                                decoration: InputDecoration(
+                                controller: nombreController,
+                                decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
-                                  labelText: 'Dni o email',
+                                  labelText: 'Nombre',
                                   hintText: 'Ingrese un correo válido abc@gmail.com'
                                 ),
                               ),
                             ),
-                            const Padding(
-                              padding: EdgeInsets.only(top: 15, left: 15, right: 30),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 15, left: 15, right: 30),
                               child: TextField(
+                                controller: contraseniaController,
                                 obscureText: true,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
                                   labelText: 'Contraseña',
                                   hintText: 'Ingrese una contraseña segura'
@@ -85,8 +109,9 @@ class Login extends StatelessWidget {
                                     style: TextStyle(color: Colors.black),
                                   ),
                                   onPressed: () {
-                                    //context.go('/votante')
-                                    context.go('/admin');
+                                    Usuario usuario = Usuario(nombre: nombreController.text, contrasenia: contraseniaController.text);
+                                    usuarioNotifier.login(usuario);
+                                    context.go('/votante');
                                   },
                                 ),
                               ),

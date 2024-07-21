@@ -2,6 +2,7 @@ import 'package:cliente_votacion/models/proceso.dart';
 import 'package:cliente_votacion/providers/states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class ProcesosList extends ConsumerWidget {
   const ProcesosList({super.key});
@@ -25,12 +26,7 @@ class ProcesosList extends ConsumerWidget {
         Expanded(
           child: procesos.isEmpty
             ? const Center(child: CircularProgressIndicator())
-            : GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                crossAxisSpacing: 10.0,
-                mainAxisSpacing: 10.0,
-              ),
+            : ListView.builder(
               itemCount: procesos.length,
               itemBuilder: (context, index) {
                 return Card(
@@ -38,6 +34,7 @@ class ProcesosList extends ConsumerWidget {
                     InkWell(
                   onTap: (){
                     print('Card ${procesos[index].nameEleccion} tapped');
+                    context.go('/votante/candidatos/$index');
                   },
                   splashColor: Colors.amber,
                   highlightColor: Colors.blue.withAlpha(50),

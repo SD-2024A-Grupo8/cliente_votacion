@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 TextStyle generalStyle(){
   return const TextStyle(
-    color: Colors.blueAccent, 
+    color: Colors.black87, 
     fontWeight: FontWeight.bold
   );
 }

@@ -1,3 +1,4 @@
+import 'package:cliente_votacion/config/local_storage.dart';
 import 'package:cliente_votacion/styles/general.dart';
 import 'package:flutter/material.dart';
 
@@ -12,13 +13,19 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       titleSpacing: 0,
       title: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.only(right: 16.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "Nombre de usuario",
-              style: generalStyle(),
+            Container(
+              width: 200,
+              color: Colors.grey[100],
+              child: Center(
+                child: Text(
+                  LocalStorageAuth.getNombre()??"Usuario",
+                  style: generalStyle(),
+                ),
+              )
             ),
             Expanded(child: _navBarItems())
           ],

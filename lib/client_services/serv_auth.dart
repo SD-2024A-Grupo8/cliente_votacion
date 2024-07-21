@@ -1,4 +1,4 @@
-import 'package:cliente_votacion/config/preferences.dart';
+import 'package:cliente_votacion/config/local_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:cliente_votacion/models/usuario.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

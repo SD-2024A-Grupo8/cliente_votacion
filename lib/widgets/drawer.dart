@@ -7,6 +7,8 @@ SizedBox MyDrawer (){
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Image.asset("assets/images/usuario.png"),
+        
         buildMenuItem(Icons.home, 'Principal', () {
           // Acción para la página de inicio
         }),

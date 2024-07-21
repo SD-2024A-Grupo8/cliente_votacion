@@ -1,3 +1,4 @@
+import 'package:cliente_votacion/models/proceso.dart';
 import 'package:cliente_votacion/providers/states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,8 +8,17 @@ class ProcesosList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final procesos = ref.watch(procesosProvider);
-    // final procesosNotifier = ref.read(procesosProvider.notifier);
+    // final procesos = ref.watch(procesosProvider);
+
+    //
+    List<Proceso> procesos = [];
+    Proceso pro1 = Proceso(id: 1, nameEleccion: "proceso111",description: "Este pro.... 111", candidatosId: [1, 2]);
+    Proceso pro2 = Proceso(id: 2, nameEleccion: "proceso222",description: "Este pro.... 222", candidatosId: [3, 4]);
+    Proceso pro3 = Proceso(id: 3, nameEleccion: "proceso333",description: "Este pro.... 333", candidatosId: [5, 6]);
+    procesos.add(pro1);
+    procesos.add(pro2);
+    procesos.add(pro3);
+    //
 
     return Column(
       children: [
@@ -17,7 +27,7 @@ class ProcesosList extends ConsumerWidget {
             ? const Center(child: CircularProgressIndicator())
             : GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3, // Número de columnas en la cuadrícula
+                crossAxisCount: 3,
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 10.0,
               ),

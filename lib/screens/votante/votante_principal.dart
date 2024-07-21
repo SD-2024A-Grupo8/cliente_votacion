@@ -1,6 +1,5 @@
-import 'package:cliente_votacion/widgets/appbar.dart';
-import 'package:cliente_votacion/widgets/body.dart';
-import 'package:cliente_votacion/widgets/drawer.dart';
+import 'package:cliente_votacion/widgets/layout.dart';
+import 'package:cliente_votacion/screens/votante/body.dart';
 import 'package:flutter/material.dart';
 
 class VotantePrincipal extends StatefulWidget {
@@ -13,14 +12,9 @@ class VotantePrincipal extends StatefulWidget {
 class VotantePrincipalState extends State<VotantePrincipal> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const MyAppBar(),
-      body: Row(
-        children: [
-          MyDrawer(),
-          const MyBody(),
-        ],
-      ),
+    return const CustomLayout(
+      title: "Lista de elecciones disponibles",
+      child: MyBody()
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'package:cliente_votacion/screens/admin/dashboard.dart';
+import 'package:cliente_votacion/widgets/admin_layout.dart';
 import 'package:flutter/material.dart';
 
 class AdminPrincipal extends StatefulWidget {
@@ -10,9 +12,9 @@ class AdminPrincipal extends StatefulWidget {
 class AdminPrincipalState extends State<AdminPrincipal> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Admin Principal')),
-      body: const Center(child: Text('Admin Principal Page')),
+    return const CustomAdminLayout(
+      title: "Dashboard",
+      child: MyDashboard()
     );
   }
 }

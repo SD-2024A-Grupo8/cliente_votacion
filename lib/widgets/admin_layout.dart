@@ -21,18 +21,7 @@ class CustomAdminLayout extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.only(right: 20, left: 20),
               margin: const EdgeInsets.only(right: 30, left: 20, top: 15, bottom: 15),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: const Offset(0, 3)
-                  ),
-                ],
-              ),
+              decoration: boxDecorationContainer(),
               child: Column(
                 children: [
                   Expanded(

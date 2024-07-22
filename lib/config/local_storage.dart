@@ -15,7 +15,14 @@ class LocalStorageAuth {
 
   static String getNombre(){
     String nombre = localStorage.getItem('nombre')??"Usuario";
-    if(nombre.isNotEmpty) return nombre;
-    return "Usuario";
+    return nombre;
+  }
+
+  static String getId(){
+    return localStorage.getItem('id') as String;
+  }
+
+  static void setId(String value) {
+    localStorage.setItem('id', value);
   }
 }

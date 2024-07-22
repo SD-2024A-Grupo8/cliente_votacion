@@ -60,7 +60,6 @@ class MyAdminAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 final List<String> _menuItems = <String>[
-  'Nosotros',
-  'Contactanos',
+  'Principal',
   'Salir',
 ];

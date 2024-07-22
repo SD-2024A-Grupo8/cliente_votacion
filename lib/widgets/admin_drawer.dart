@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 // ignore: non_constant_identifier_names
-SizedBox MyAdminDrawer (){
-  return SizedBox(
+Container MyAdminDrawer (BuildContext context){
+  return Container(
+    margin: const EdgeInsets.only(left: 15),
     width: 200,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -10,13 +12,13 @@ SizedBox MyAdminDrawer (){
         Image.asset("assets/images/usuario.png"),
         
         buildMenuItem(Icons.home, 'Principal', () {
-          // Acción para la página de inicio
+           context.go("/admin");
         }),
         buildMenuItem(Icons.format_list_bulleted_outlined, 'Lista de procesos', () {
-          // Acción para la página de características
+          context.go("/admin/lista_procesos");
         }),
         buildMenuItem(Icons.plus_one, 'Nuevo proceso', () {
-          // Acción para la página de precios
+          context.go("/admin/agregar_proceso");
         }),
         buildMenuItem(Icons.auto_graph, 'Reportes', () {
           // Acción para la página de contacto

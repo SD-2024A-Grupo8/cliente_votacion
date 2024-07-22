@@ -15,12 +15,12 @@ class CustomAdminLayout extends StatelessWidget {
       appBar: const MyAdminAppBar(),
       body: Row(
         children: [
-          Expanded(flex: 0, child: MyAdminDrawer()),
+          Expanded(flex: 0, child: MyAdminDrawer(context)),
           Expanded(
             flex: 1, 
             child: Container(
-              padding: const EdgeInsets.only(right: 30, left: 30),
-              margin: const EdgeInsets.only(right: 30, left: 30, top: 15, bottom: 15),
+              padding: const EdgeInsets.only(right: 20, left: 20),
+              margin: const EdgeInsets.only(right: 30, left: 20, top: 15, bottom: 15),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10.0),

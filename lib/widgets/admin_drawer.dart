@@ -17,7 +17,7 @@ Container MyAdminDrawer (BuildContext context){
           padding: const EdgeInsets.all(10),
           child: Image.asset("assets/images/usuario.png"),
         ),
-        const BuildMenuItem(index: 0, icon: Icons.home, title: 'Principal', route: "/admin"),
+        const BuildMenuItem(index: 0, icon: Icons.home, title: 'Dashboard', route: "/admin"),
         const BuildMenuItem(index: 1, icon: Icons.format_list_bulleted_outlined, title: 'Lista de procesos', route: "/admin/lista_procesos"),
         const BuildMenuItem(index: 2, icon: Icons.plus_one, title: 'Nuevo proceso', route: "/admin/agregar_proceso"),
         const BuildMenuItem(index: 3, icon: Icons.auto_graph, title: 'Reportes', route: "/admin"),

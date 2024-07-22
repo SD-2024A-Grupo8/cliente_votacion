@@ -20,3 +20,18 @@ TextStyle navBarStyle(){
     color: Colors.black
   );
 }
+
+BoxDecoration boxDecorationContainer(){
+  return BoxDecoration(
+    color: Colors.white,
+    borderRadius: BorderRadius.circular(10.0),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.1),
+        spreadRadius: 5,
+        blurRadius: 7,
+        offset: const Offset(0, 3)
+      ),
+    ],
+  );
+}

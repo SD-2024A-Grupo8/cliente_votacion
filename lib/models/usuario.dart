@@ -1,5 +1,5 @@
 class Usuario {
-  final int? id;
+  int? id;
   final String nombre;
   final String contrasenia;
   String? token;
@@ -23,5 +23,9 @@ class Usuario {
 
   void setToken(String? newToken) {
     token = newToken;
+  }
+
+  void setId(int? userId) {
+    id = userId;
   }
 }

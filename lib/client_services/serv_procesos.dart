@@ -29,4 +29,35 @@ class ProcesoNotifier extends StateNotifier<List<Proceso>> {
       print("Error: $e");
     }
   }
+
+  Future<void>  createProcesos(Proceso dept) async {
+    const url = 'http://localhost:8080/elecciones/create';
+    try {
+      final response = await http.post(
+        Uri.parse(url),
+        headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8'},
+        body: jsonEncode(dept.toJson()),
+      );
+
+      if (response.statusCode == 200) {
+        final dynamic jsonData = json.decode(response.body);
+        state = [...state, Proceso.fromJson(jsonData)];
+      }
+    } catch (e) {
+      // Manejo de errores
+    }
+  }
+
+  Future<void> deleteProceso(int? id) async {
+    final url = 'http://localhost:8080/elecciones/delete/$id';
+    try {
+      final response = await http.delete(Uri.parse(url));
+
+      if (response.statusCode == 200) {
+        state = state.where((ingeniero) => ingeniero.id != id).toList();
+      }
+    } catch (e) {
+      // Manejo de errores
+    }
+  }
 }

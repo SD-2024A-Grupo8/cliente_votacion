@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 // ignore: non_constant_identifier_names
-SizedBox MyDrawer (){
+SizedBox MyDrawer (BuildContext context){
   return SizedBox(
     width: 200,
     child: Column(
@@ -10,7 +11,7 @@ SizedBox MyDrawer (){
         Image.asset("assets/images/usuario.png"),
         
         buildMenuItem(Icons.home, 'Principal', () {
-          // Acción para la página de inicio
+          context.go('/votante');
         }),
         buildMenuItem(Icons.featured_play_list, 'Mis votaciones', () {
           // Acción para la página de características

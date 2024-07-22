@@ -15,12 +15,12 @@ class CustomLayout extends StatelessWidget {
       appBar: const MyAppBar(),
       body: Row(
         children: [
-          Expanded(flex: 0, child: MyDrawer()),
+          Expanded(flex: 0, child: MyDrawer(context)),
           Expanded(
             flex: 1, 
             child: Container(
               padding: const EdgeInsets.only(right: 30, left: 30),
-              margin: const EdgeInsets.only(right: 30, left: 30, top: 15, bottom: 15),
+              margin: const EdgeInsets.only(right: 30, left: 20, top: 15, bottom: 15),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10.0),

@@ -3,6 +3,7 @@ import 'package:cliente_votacion/providers/states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+// ignore: must_be_immutable
 class ProcesoForm extends ConsumerStatefulWidget {
   BuildContext fatherContext;
 

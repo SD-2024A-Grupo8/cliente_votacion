@@ -19,3 +19,5 @@ final candidatosProvider = StateNotifierProvider<CandidatoNotifier, List<Candida
 });
 
 final candidatoSeleccionado = StateProvider.autoDispose<int>((ref) => 100);
+final menuVotanteItemSelected = StateProvider<int>((ref) => 0);
+final menuAdminItemSelected = StateProvider<int>((ref) => 0);

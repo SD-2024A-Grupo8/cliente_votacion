@@ -1,4 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:cliente_votacion/config/local_storage.dart';
+import 'package:cliente_votacion/config/urls.dart';
+import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:cliente_votacion/models/usuario.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,8 +13,8 @@ import 'dart:convert';
 class UsuarioNotifier extends StateNotifier<Usuario?> {
   UsuarioNotifier() : super(null);
 
-  Future<void>  login(Usuario usuario) async {
-    const url = 'http://18.228.119.181/login';
+  Future<void>  login(Usuario usuario, BuildContext context) async {
+    const url = '$AUTH_URL/login';
     print(usuario.toJson());
     try {
       final response = await http.post(
@@ -22,34 +27,59 @@ class UsuarioNotifier extends StateNotifier<Usuario?> {
         final dynamic jsonData = json.decode(response.body);
 
         if (jsonData is Map<String, dynamic>) {
-          if (jsonData.containsKey('jwToken')) {
-            print('La clave "nombre" está presente.');
-            print(jsonData['jwToken']);
+          if (jsonData.containsKey('token')) {
+            print(jsonData['token']);
 
-            usuario.setToken(jsonData['jwToken']);
+            usuario.setToken(jsonData['token']);
+            
+
+            final jwt = JWT.decode(jsonData['token']);
+
+            print(2);
+            // Extraer los datos
+            final userId = jwt.payload['id'];
+            LocalStorageAuth.setToken(jsonData['token']);
+            LocalStorageAuth.setId(userId.toString());
+            LocalStorageAuth.setNombre(usuario.nombre);
+
             state = usuario;
+
+            if (usuario.nombre == "admin"){
+              context.go('/admin');
+            } else{
+              context.go('/votante');
+            }
           } else {
             print('La clave "nombre" no está presente.');
           }
         }
       }
     } catch (e) {
-      String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6InZvbGwgbWVkIiwiaWQiOjgsImV4cCI6MTcyMTkyMzM5OH0.Oy0M0o5tpb4vjjBApZ3BQbiRDvCisqS07GD7bF0AGNg";
-
+      String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6InZvbGwgbWVkIiwiaWQiOjEsImV4cCI6MTcyMjExNDU5Nn0.3blpItKPoO4hNNPlfYxu_mIshuIVQws__rBSrWcCskw";
+      print(1);
       // Decodificar el token
       final jwt = JWT.decode(token);
 
+      print(2);
       // Extraer los datos
       final userId = jwt.payload['id'];
       print('User ID: $userId');
       
       usuario.setToken(token);
-      usuario.setId(8);
+      usuario.setId(userId);
+
+      
       
       LocalStorageAuth.setToken(token);
       LocalStorageAuth.setId(userId.toString());
       LocalStorageAuth.setNombre(usuario.nombre);
       state = usuario;
+
+      if (usuario.nombre == "admin"){
+        context.go('/admin');
+      } else{
+        context.go('/votante');
+      }
       print("Error: $e");
     }
   }

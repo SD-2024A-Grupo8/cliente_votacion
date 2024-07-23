@@ -1,4 +1,5 @@
 import 'package:cliente_votacion/config/local_storage.dart';
+import 'package:cliente_votacion/config/urls.dart';
 import 'package:http/http.dart' as http;
 import 'package:cliente_votacion/models/proceso.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,7 +11,7 @@ class ProcesoNotifier extends StateNotifier<List<Proceso>> {
   }
 
   Future<void>  fetchProcesos() async {
-    const url = 'http://18.228.119.181/elecciones/proces';
+    const url = '$ELECCIONES_URL/elecciones';
     
     try {
       final response = await http.get(
@@ -26,22 +27,26 @@ class ProcesoNotifier extends StateNotifier<List<Proceso>> {
         state = jsonData.map((item) => Proceso.fromJson(item)).toList();
       }
     } catch (e) {
-      print("Error: $e");
+      // Manejo de errores
     }
   }
 
-  Future<void>  createProcesos(Proceso dept) async {
-    const url = 'http://localhost:8080/elecciones/create';
+  Future<void>  createProceso(Proceso proceso) async {
+    const url = '$ELECCIONES_URL/elecciones';
     try {
       final response = await http.post(
         Uri.parse(url),
-        headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8'},
-        body: jsonEncode(dept.toJson()),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': 'Bearer ${LocalStorageAuth.getToken()}'
+        },
+        body: jsonEncode(proceso.toJson()),
+        
       );
 
       if (response.statusCode == 200) {
         final dynamic jsonData = json.decode(response.body);
-        state = [...state, Proceso.fromJson(jsonData)];
+        //state = [...state, Proceso.fromJson(jsonData)];
       }
     } catch (e) {
       // Manejo de errores
@@ -49,12 +54,17 @@ class ProcesoNotifier extends StateNotifier<List<Proceso>> {
   }
 
   Future<void> deleteProceso(int? id) async {
-    final url = 'http://localhost:8080/elecciones/delete/$id';
+    final url = '$ELECCIONES_URL/elecciones/$id';
     try {
-      final response = await http.delete(Uri.parse(url));
+      final response = await http.delete(
+        Uri.parse(url),
+        headers: {
+          'Authorization': 'Bearer ${LocalStorageAuth.getToken()}'
+        }
+      );
 
       if (response.statusCode == 200) {
-        state = state.where((ingeniero) => ingeniero.id != id).toList();
+        state = state.where((proceso) => proceso.id != id).toList();
       }
     } catch (e) {
       // Manejo de errores

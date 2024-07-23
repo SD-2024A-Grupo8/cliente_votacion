@@ -4,7 +4,7 @@ class Proceso{
    String description;
    String? fechaInicio;
    String? fechaFin;
-   List<int>? candidatosId;
+   List<int?>? candidatosId;
 
    Proceso({
     this.id,

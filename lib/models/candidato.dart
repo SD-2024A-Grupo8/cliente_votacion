@@ -16,7 +16,7 @@ class Candidato{
   factory Candidato.fromJson(Map<String, dynamic> json) {
     return Candidato(
       id: json['id']??0,
-      nombre: json['nombre'] as String
+      nombre: json['partidoPolitico'] as String
     );
   }
 }

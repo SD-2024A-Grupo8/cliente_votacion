@@ -1,5 +1,5 @@
 import 'package:cliente_votacion/screens/admin/admin_principal.dart';
-import 'package:cliente_votacion/screens/admin/procesos_list.dart';
+import 'package:cliente_votacion/screens/admin/eleccion_crud/procesos_list.dart';
 import 'package:cliente_votacion/screens/login.dart';
 import 'package:cliente_votacion/screens/votante/candidatos_list.dart';
 import 'package:cliente_votacion/screens/votante/votante_principal.dart';

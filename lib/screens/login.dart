@@ -110,8 +110,7 @@ class LoginState extends ConsumerState<Login> {
                                   ),
                                   onPressed: () {
                                     Usuario usuario = Usuario(nombre: nombreController.text, contrasenia: contraseniaController.text);
-                                    usuarioNotifier.login(usuario);
-                                    context.go('/admin');
+                                    usuarioNotifier.login(usuario, context);
                                   },
                                 ),
                               ),
